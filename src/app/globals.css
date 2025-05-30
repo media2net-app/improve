@@ -28,19 +28,3 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
-
-@keyframes logo-slider-x {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(50%);
-  }
-}
-.logo-slider-track {
-  animation: logo-slider-x 30s linear infinite;
-  will-change: transform;
-  display: flex;
-  gap: 4rem;
-  min-width: max-content;
-}

@@ -68,7 +68,7 @@ const PricingPage = () => {
               Simple, Transparent Pricing
             </h1>
             <p className="mt-4 text-xl text-blue-100">
-              Choose the plan that's right for your business
+              Choose the plan that&apos;s right for your business
             </p>
           </div>
         </div>

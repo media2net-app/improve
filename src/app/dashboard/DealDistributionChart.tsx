@@ -6,8 +6,7 @@ import {
   XAxis,
   Tooltip,
   CartesianGrid,
-  ResponsiveContainer,
-  TooltipProps as RechartsTooltipProps
+  ResponsiveContainer
 } from "recharts";
 
 const data = [
@@ -23,7 +22,8 @@ const data = [
   { month: "OCT", deals: 48 },
 ];
 
-const CustomTooltip = ({ active, payload, label }: RechartsTooltipProps<any, any>) => {
+type TooltipPayload = { value?: number };
+const CustomTooltip = ({ active, payload, label }: { active?: boolean; payload?: TooltipPayload[]; label?: string }) => {
   if (active && payload && payload.length) {
     return (
       <div className="bg-white rounded-lg shadow-lg px-4 py-2 border border-gray-100">

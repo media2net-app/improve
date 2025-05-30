@@ -80,7 +80,7 @@ export default function AnalyticsPage() {
           <tbody>
             {companies
               .filter(c => companyFilter === "All Company" || c.name === companyFilter)
-              .map((c, i) => (
+              .map((c) => (
                 <tr key={c.id} className="border-b border-gray-100 hover:bg-blue-50 transition">
                   <td className="py-3 px-4 flex items-center gap-2">
                     <img src={c.avatar} alt={c.name} className="w-8 h-8 rounded-full" />

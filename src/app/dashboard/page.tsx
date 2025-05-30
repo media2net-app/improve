@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import CalendarNotes from "./CalendarNotes";
 import TaskList from "./TaskList";
-import Messages from "./Messages";
 import TeamMembers from "./TeamMembers";
 import Chat from "./Chat";
 
@@ -16,7 +15,15 @@ const statsData = [
   { label: "Spendings", value: "$3,564", color: "bg-purple-50 text-purple-600", icon: "payments" },
 ];
 
-function StatCard({ label, value, color, icon, delay }: any) {
+interface StatCardProps {
+  label: string;
+  value: string | number;
+  color: string;
+  icon: string;
+  delay: number;
+}
+
+function StatCard({ label, value, color, icon, delay }: StatCardProps) {
   const [show, setShow] = useState(false);
   useEffect(() => {
     const t = setTimeout(() => setShow(true), delay);
