@@ -225,7 +225,7 @@ export default function Home() {
             <a href="#" className="text-white/90 hover:text-[#00FFB2] transition-colors duration-200 font-medium relative after:content-[''] after:block after:h-[2px] after:bg-[#00FFB2] after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-200 after:origin-left after:mt-1">Pricing</a>
           </nav>
           <button className="hidden lg:flex border border-[#00FFB2] text-[#00FFB2] bg-transparent px-4 py-2 rounded-full items-center gap-2 font-semibold shadow-none hover:bg-[#00FFB2] hover:text-black transition-colors duration-200">
-            Let's Talk <span className="text-xl">→</span>
+            Let&apos;s Talk <span className="text-xl">→</span>
           </button>
           {/* Hamburger voor mobiel */}
           <button className="lg:hidden flex flex-col items-center justify-center w-10 h-10 gap-1.5" onClick={() => setMenuOpen(true)} aria-label="Open menu">
@@ -245,7 +245,7 @@ export default function Home() {
               <a href="#" className="hover:text-[#00FFB2]" onClick={() => setMenuOpen(false)}>Pricing</a>
             </nav>
             <button className="mt-10 border border-[#00FFB2] text-[#00FFB2] bg-transparent px-8 py-3 rounded-full font-semibold shadow-none hover:bg-[#00FFB2] hover:text-black transition-colors duration-200 text-lg">
-              Let's Talk <span className="text-xl">→</span>
+              Let&apos;s Talk <span className="text-xl">→</span>
             </button>
           </div>
         )}
