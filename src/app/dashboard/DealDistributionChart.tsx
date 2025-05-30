@@ -4,31 +4,29 @@ import {
   LineChart,
   Line,
   XAxis,
+  YAxis,
   Tooltip,
   CartesianGrid,
-  ResponsiveContainer
+  ResponsiveContainer,
+  TooltipProps
 } from "recharts";
+import { ValueType, NameType } from "recharts/types/component/DefaultTooltipContent";
 
 const data = [
-  { month: "JAN", deals: 78 },
-  { month: "FEB", deals: 62 },
-  { month: "MAR", deals: 70 },
-  { month: "APR", deals: 50 },
-  { month: "MAY", deals: 68 },
-  { month: "JUN", deals: 40 },
-  { month: "JUL", deals: 60 },
-  { month: "AUG", deals: 55 },
-  { month: "SEP", deals: 72 },
-  { month: "OCT", deals: 48 },
+  { name: "Jan", value: 400 },
+  { name: "Feb", value: 300 },
+  { name: "Mar", value: 600 },
+  { name: "Apr", value: 800 },
+  { name: "May", value: 500 },
+  { name: "Jun", value: 700 },
 ];
 
-type TooltipPayload = { value?: number };
-const CustomTooltip = ({ active, payload, label }: { active?: boolean; payload?: TooltipPayload[]; label?: string }) => {
+const CustomTooltip = ({ active, payload, label }: TooltipProps<ValueType, NameType>) => {
   if (active && payload && payload.length) {
     return (
-      <div className="bg-white rounded-lg shadow-lg px-4 py-2 border border-gray-100">
-        <div className="text-xs text-gray-400">{label}</div>
-        <div className="text-base font-semibold text-blue-600">{payload[0]?.value}</div>
+      <div className="bg-white p-4 rounded-lg shadow-lg border border-gray-200">
+        <p className="text-gray-600">{`${label}`}</p>
+        <p className="text-blue-600 font-semibold">{`Value: ${payload[0].value}`}</p>
       </div>
     );
   }
@@ -36,34 +34,27 @@ const CustomTooltip = ({ active, payload, label }: { active?: boolean; payload?:
 };
 
 const DealDistributionChart = () => (
-  <ResponsiveContainer width="100%" height={120}>
-    <LineChart
-      data={data}
-      margin={{ top: 20, right: 20, left: 0, bottom: 0 }}
-    >
-      <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" vertical={false} />
-      <XAxis
-        dataKey="month"
-        tick={{ fill: "#9ca3af", fontSize: 12, fontWeight: 500 }}
-        axisLine={false}
-        tickLine={false}
-        padding={{ left: 10, right: 10 }}
-      />
-      <Tooltip
-        content={props => <CustomTooltip {...props} />}
-        cursor={{ stroke: "#3b82f6", strokeWidth: 1, opacity: 0.1 }}
-      />
-      <Line
-        type="monotone"
-        dataKey="deals"
-        stroke="#3b82f6"
-        strokeWidth={3}
-        dot={false}
-        activeDot={{ r: 5, fill: "#3b82f6", stroke: "#fff", strokeWidth: 2 }}
-        isAnimationActive={true}
-      />
-    </LineChart>
-  </ResponsiveContainer>
+  <div className="w-full h-[300px] bg-white rounded-lg p-4">
+    <ResponsiveContainer width="100%" height="100%">
+      <LineChart data={data}>
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip
+          content={props => <CustomTooltip {...props} />}
+          cursor={{ stroke: "#3b82f6", strokeWidth: 1, opacity: 0.1 }}
+        />
+        <Line
+          type="monotone"
+          dataKey="value"
+          stroke="#3b82f6"
+          strokeWidth={2}
+          dot={{ fill: "#3b82f6", strokeWidth: 2 }}
+          activeDot={{ r: 8, fill: "#3b82f6" }}
+        />
+      </LineChart>
+    </ResponsiveContainer>
+  </div>
 );
 
 export default DealDistributionChart; 
